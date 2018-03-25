@@ -135,15 +135,12 @@ def compile(parseItem):
 
 
 code = """
-IRC(5)
 if (1) {
-    if (1) {
-    WRT("ABCD")
-    }
+    IRC(12)
+    WRT("AAAA")
 }
 else {
-IRC(1)
-WRT("ABCD")
+    WRT("BBBB")
 }
 
 """
@@ -164,5 +161,7 @@ pretty_print2(parsed,0)
 for state in program:
     print state, program[state]
 
+
+print program
 
 
