@@ -3,13 +3,6 @@ This is the lexer for the Turing Machine
 micro-langauge
 """
 
-"""
-Rules:
-    1. There are no variables at this low-level of abstraction
-    2. There are only instructions, branches, and blocks (and loops?)
-"""
-
-
 def lex(code):
     instructions = ["ILC","WRT","IRU","ILU","IRC"]
     lexed = []
@@ -38,11 +31,9 @@ def lex(code):
                     inNumber = False
         else:
             if char == "\"":
-                print "yeet"
                 currentLexItem += "\""
                 inString = True
             elif char.isdigit():
-                print char
                 if len(code) > 0 and (code[1].isdigit()):
                     inNumber = True
                     currentLexItem += char
@@ -71,22 +62,7 @@ def lex(code):
                     lexed.append(("instruction",inst))
                     code = code[len(inst)-2:]
         code = code[1:]
-    print lexed
-test = """
-if(1234)
-{
-if (1) { IRC(7) } else { IRU("A")}
-WRT("8")
-}
-else{
-if (1) {IRC(7)}
-IRU("C")
-}
-
-
-"""
-
-lex(test)
+    return lexed
 
 
 
